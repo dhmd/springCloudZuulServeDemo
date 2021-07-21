@@ -1,0 +1,20 @@
+spring:
+  application:
+    name : springCloudZuul
+
+server:
+  port : 6005
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:5000/eureka/
+
+zuul:
+  routes:
+    sbService :
+      path : /sbService/**
+      serviceId : springbootService
+    feign-route:                   # 该配置方式中，user-route只是给路由一个名称，可以任意起名。
+      service-id: springbootConsumerFeign
+      path: /feign/**              # service-id对应的路径
